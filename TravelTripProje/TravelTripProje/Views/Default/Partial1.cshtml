@@ -1,0 +1,30 @@
+﻿@using TravelTripProje.Models.Sınıflar
+@model List<Blog>
+<div class="can-bot">
+    @foreach (var x in Model)
+    {
+        <div class="left">
+            <div class=" bot-left">
+                <img src="@x.BlokImage" alt="" />
+            </div>
+            <div class="left-text">
+
+                <h4>@x.baslik</h4>
+                <span class="doller">@x.Tarih.ToString("dd.MM.yyyy")</span>
+                @if (x.Aciklama.Length > 100)
+                {
+                    <p>@x.Aciklama.Substring(0, 100)</p>
+                }
+                else
+                {
+                    <p>@x.Aciklama</p>
+                }
+
+                <p><a href="/Blog/BlogDetay/@x.ID"><span class="read">Devamını Oku</span></a></p>
+            </div>
+        </div>
+    }
+    @Html.Action("Partial2", "Default")
+    <div class="clear"></div>
+</div>
+   
